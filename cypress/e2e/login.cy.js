@@ -2,8 +2,15 @@
 
 context('Funcionalidade Login', () => {
 
-    it('Deve fazer login na aplicação com sucesso', () => {
+    beforeEach(() => {
         cy.visit('minha-conta/');
+    });
+
+    afterEach(() => {
+        cy.screenshot();
+    });
+
+    it('Deve fazer login na aplicação com sucesso', () => {
         cy.get('#username').type('aluno_ebac@teste.com');
         cy.get('#password').type('teste@teste.com');
         cy.get('input[value="Login"]').click();
@@ -11,7 +18,6 @@ context('Funcionalidade Login', () => {
     });
 
     it('Deve exibir mensagem de erro ao tentar logar com email inválido', () => {
-        cy.visit('minha-conta/');
         cy.get('#username').type('ebactesteebac@teste.com');
         cy.get('#password').type('teste@teste.com');
         cy.get('input[value="Login"]').click();
@@ -19,7 +25,6 @@ context('Funcionalidade Login', () => {
     });
 
     it('Deve exibir mensagem de erro ao tentar logar com senha inválida', () => {
-        cy.visit('minha-conta/');
         cy.get('#username').type('ebac@teste.com');
         cy.get('#password').type('teste@teste.com');
         cy.get('input[value="Login"]').click();
