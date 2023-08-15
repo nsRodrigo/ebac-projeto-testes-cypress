@@ -1,1 +1,0 @@
-# teste-cypress-ebac
