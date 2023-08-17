@@ -21,14 +21,9 @@ context('Funcionalidade Produtos', () => {
     });
 
     it('Deve adicionar um produto ao carrinho', () => {
-        let qtd = 3;
+        let qtd = 4;
+        let produto = 'Atlas Fitness Tank'
 
-        cy.get('[class="product-block grid"]').contains('Atlas Fitness Tank').click();
-        cy.get('.button-variable-item-M').click()
-        cy.get('.button-variable-item-Blue').click()
-        cy.get('.input-text').clear().type(qtd)
-        cy.get('.single_add_to_cart_button').click()
-        cy.get('.mini-cart-items').should('contains.text', qtd)
-        cy.get('[class="woocommerce-message"]').should('contains.text', `${qtd} × “Atlas Fitness Tank” foram adicionados no seu carrinho.`)
+        cy.addProduto(produto, 'M', 'Blue', qtd);
     });
 });
