@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clonar o Repositório') {
+            steps {
+                git branch: 'main', url: 'https://github.com/nsRodrigo/teste-cypress-ebac'
+            }
+        }
+        stage('Instalar das dependencias') {
+            steps {
+                bat 'npm install'
+            }
+        }
+        stage('Execução dos testes') {
+            steps {
+                bat 'npm run cy:run'
+            }
+        }
+    }
+}
